@@ -1,0 +1,15 @@
+{
+	"name": "Bonfire Clicker DEV",
+	"build": {
+		"dockerfile": "../Dockerfile",
+		"context": ".."
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"eamodio.gitlens"
+			]
+		}
+	},
+	// "postCreateCommand": "npx vite"
+}
