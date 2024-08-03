@@ -1,7 +1,7 @@
 {
 	"name": "Bonfire Clicker DEV",
 	"build": {
-		"dockerfile": "../Dockerfile",
+		"dockerfile": "../docker/Dockerfile",
 		"context": ".."
 	},
 	"customizations": {
@@ -11,5 +11,7 @@
 			]
 		}
 	},
-	// "postCreateCommand": "npx vite"
+	// run npx vite in the background, and don't save nohup output
+	"postStartCommand": "nohup /bin/sh -c 'npx vite &' >/dev/null 2>&1",
+	"postAttachCommand": "/bin/sh"
 }
