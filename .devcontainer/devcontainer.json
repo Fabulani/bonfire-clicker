@@ -7,11 +7,10 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"eamodio.gitlens"
+				"eamodio.gitlens",
+				"esbenp.prettier-vscode",
+				"naumovs.color-highlight"
 			]
 		}
-	},
-	// run npx vite in the background, and don't save nohup output
-	"postStartCommand": "nohup /bin/sh -c 'npx vite &' >/dev/null 2>&1",
-	"postAttachCommand": "/bin/sh"
+	}
 }
