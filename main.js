@@ -16,10 +16,6 @@ if (WebGL.isWebGL2Available()) {
 function init() {
   /* Initialize */
 
-  // FPS counter
-  const stats = new Stats();
-  container.appendChild(stats.dom);
-
   // Setup renderer
   const renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -97,14 +93,32 @@ function init() {
   floor.position.y = -0.5;
   scene.add(floor);
 
+  // Game stats
+  let counter = 0;
+
+  // FPS counter
+  const stats = new Stats();
+  container.appendChild(stats.dom);
+
+  // Groups
+  const floatingCountGroup = new THREE.Group();
+  scene.add(floatingCountGroup);
+
   // Raycaster
-  const raycaster = new Raycaster(renderer, camera, clickables);
+  const raycaster = new Raycaster(
+    renderer,
+    camera,
+    clickables,
+    counter,
+    floatingCountGroup
+  );
   document.addEventListener("mousedown", raycaster.onMouseDown.bind(raycaster));
 
   // Animation loop
   function animate() {
     stats.update();
     controls.update();
+    //TODO: add floating text animation
     renderer.render(scene, camera);
   }
   renderer.setAnimationLoop(animate);
